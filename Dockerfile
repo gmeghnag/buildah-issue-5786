@@ -12,7 +12,8 @@ ENV \
   LC_ALL='en_US.UTF-8' \
   TZ=UTC
 
-COPY ./rootfs /
+COPY ./rootfs/etc/yum.repos.d /etc/yum.repos.d
+COPY ./rootfs/etc/pki/rpm-gpg /etc/pki/rpm-gpg
 
 ## https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
