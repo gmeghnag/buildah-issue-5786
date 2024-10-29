@@ -1,23 +1,23 @@
 # REPRODUCER
 
 ```
-oc new-project buildah-issue-5786
+oc new-project buildah-issue-5800
 ```
 ```
 oc get secret etc-pki-entitlement -n openshift-config-managed -o json | jq 'del(.metadata.creationTimestamp, .metadata.resourceVersion, .metadata.resourceVersion, .metadata.namespace, .metadata.uid)' | oc create -f -
 ```
 ```
-curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/buildah-pod-working.yaml | oc create -f -
+curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/buildah-pod-working.yaml | oc create -f -
 ```
 ```
-curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/buildah-pod-not-working.yaml | oc create -f -
+curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/buildah-pod-not-working.yaml | oc create -f -
 ```
 
 
 # FAILING POD OUTPUT
-Error message from failing pod `buildah-issue-5786-1-32-2-not-working`:
+Error message from failing pod `buildah-issue-5800-1-32-2-not-working`:
 ```
-$ oc logs pod/buildah-issue-5786-1-32-2-not-working | tail -50
+$ oc logs pod/buildah-issue-5800-1-32-2-not-working | tail -50
 time="2024-10-29T13:55:57Z" level=debug msg="bind mounted \"/var/tmp/buildah3386043866/hosts\" to \"/var/tmp/buildah3386043866/mnt/rootfs/etc/hosts\""
 time="2024-10-29T13:55:57Z" level=debug msg="bind mounting \"/etc/resolv.conf\" on \"/var/tmp/buildah3386043866/mnt/rootfs/etc/resolv.conf\" [rbind]"
 time="2024-10-29T13:55:57Z" level=debug msg="bind mounted \"/var/tmp/buildah3386043866/resolv.conf\" to \"/var/tmp/buildah3386043866/mnt/rootfs/etc/resolv.conf\""
