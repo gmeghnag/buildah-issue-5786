@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: buildah-issue-5786-1-32-0-working
+  name: buildah-issue-5800-1-32-0-working
 spec:
   volumes:
   - name: etc-pki-entitlement
@@ -22,13 +22,13 @@ spec:
       #!/bin/bash
       mkdir -p rootfs/etc/pki/rpm-gpg
       mkdir -p rootfs/etc/yum.repos.d
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Official > rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Official
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-9 > rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-9
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release > rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/rootfs/etc/yum.repos.d/centos9.repo > rootfs/etc/yum.repos.d/centos9.repo
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/rootfs/etc/yum.repos.d/epel.repo > rootfs/etc/yum.repos.d/epel.repo
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/rootfs/etc/yum.repos.d/redhat9.repo > rootfs/etc/yum.repos.d/redhat9.repo
-      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5786/refs/heads/main/Dockerfile > Dockerfile
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Official > rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Official
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-9 > rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-9
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release > rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/rootfs/etc/yum.repos.d/centos9.repo > rootfs/etc/yum.repos.d/centos9.repo
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/rootfs/etc/yum.repos.d/epel.repo > rootfs/etc/yum.repos.d/epel.repo
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/rootfs/etc/yum.repos.d/redhat9.repo > rootfs/etc/yum.repos.d/redhat9.repo
+      curl -sk https://raw.githubusercontent.com/gmeghnag/buildah-issue-5800/refs/heads/main/Dockerfile > Dockerfile
       buildah bud --log-level debug --storage-driver vfs -v /etc/pki/entitlement:/etc/pki/entitlement/ -t test-image:latest .
     securityContext:
       capabilities:
